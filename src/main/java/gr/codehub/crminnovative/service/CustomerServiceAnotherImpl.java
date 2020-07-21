@@ -1,6 +1,7 @@
 package gr.codehub.crminnovative.service;
 
 import gr.codehub.crminnovative.model.Customer;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 
 
 @Service
+@Qualifier("ImplLIST")
 public class CustomerServiceAnotherImpl implements CustomerService{
 
     private  List<Customer>

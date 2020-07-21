@@ -11,9 +11,19 @@ public class CustomerServiceImpl implements CustomerService {
             customers = new ArrayList<>();
 
     static {
-        customers.add(new Customer("Giannis"));
-        customers.add(new Customer("Elissavet"));
-        customers.add(new Customer("Vangelis"));
+
+        Customer customer = new Customer();
+        customer.setFirst("Giannis");
+        customers.add(customer);
+
+        Customer customer1 = new Customer();
+        customer1.setFirst("Elissavet");
+        customers.add(customer1);
+
+        Customer customer2 = new Customer();
+        customer2.setFirst("Vangelis");
+        customers.add(customer2);
+
     }
 
     @Override

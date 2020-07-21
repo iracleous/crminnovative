@@ -2,11 +2,10 @@ package gr.codehub.crminnovative.controller;
 
 
 import gr.codehub.crminnovative.model.Customer;
-import gr.codehub.crminnovative.service.CustomerService;
-import gr.codehub.crminnovative.service.CustomerServiceAnotherImpl;
-import gr.codehub.crminnovative.service.CustomerServiceDbImpl;
-import gr.codehub.crminnovative.service.CustomerServiceImpl;
+import gr.codehub.crminnovative.model.Orders;
+import gr.codehub.crminnovative.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,8 +14,16 @@ import java.util.List;
 @RestController
 public class CrmController {
     @Autowired
+    @Qualifier ("ImplDB")
     private CustomerService customerService;
 
+    @Autowired
+    private OrdersService ordersService;
+
+    @PostMapping("orders")
+    public Orders createOrders(){
+        return ordersService.createOrder(null);
+    }
 
 
     @RequestMapping("hello")
@@ -31,7 +38,10 @@ public class CrmController {
 
     @PostMapping("add/{name}" )
     public Customer addCustomer(@PathVariable String name){
-        return customerService.addCustomer(new Customer(name));
+        Customer customer = new Customer();
+        customer.setFirst(name);
+
+        return customerService.addCustomer(customer);
     }
 
     @PostMapping("addcustomer" )
