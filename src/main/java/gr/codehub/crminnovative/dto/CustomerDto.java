@@ -1,27 +1,20 @@
-package gr.codehub.crminnovative.model;
+package gr.codehub.crminnovative.dto;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import lombok.NoArgsConstructor;
 
-
-import javax.persistence.*;
-
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Customer  {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomerDto {
     private int id;
 
     private String first;
+
     private String last;
     private String street;
     private String number;
@@ -29,14 +22,4 @@ public class Customer  {
     private String email;
     private Date date;
     private Date registration;
-
-    @ManyToOne
-    private Customer recommender;
-
-    @OneToMany(mappedBy="recommender")
-    private List<Customer> recommended;
-
-    @OneToMany(mappedBy = "customer")
-    private List<Orders> orders;
-
 }

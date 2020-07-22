@@ -1,27 +1,26 @@
 package gr.codehub.crminnovative.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product {
+public class OrdersProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
-    private String name;
+    private int quantity;
     private double price;
-    private int inventoryQuantity;
 
-    @OneToMany(mappedBy = "product")
-    private List<OrdersProduct> ordersProducts;
+    @ManyToOne
+    private Orders orders;
+    @ManyToOne
+    private Product product;
 
 }

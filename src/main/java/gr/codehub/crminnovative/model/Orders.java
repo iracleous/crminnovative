@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -17,6 +17,15 @@ import java.util.UUID;
 public class Orders {
     @Id
     @GeneratedValue(generator = "UUID")
-    UUID id;
+    private UUID id;
+
+    private Date ordersDate;
+    private double totalAmount;
+
+    @OneToMany(mappedBy = "orders")
+    private List<OrdersProduct> ordersProducts;
+
+    @ManyToOne
+    private Customer customer;
 
 }
