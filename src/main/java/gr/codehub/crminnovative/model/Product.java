@@ -1,6 +1,7 @@
 package gr.codehub.crminnovative.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Product {
     private int inventoryQuantity;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<OrdersProduct> ordersProducts;
 
 }
