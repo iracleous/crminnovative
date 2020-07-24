@@ -31,6 +31,9 @@ public class CustomerServiceDbImpl implements CustomerService {
             throw new CustomerCreationException("null customer");
          if (customer.getEmail()==null  || !customer.getEmail().contains("@")    )
             throw new CustomerCreationException("invalid customer's email");
+
+
+
         return customerRepository.save(customer);
     }
 

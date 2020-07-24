@@ -24,6 +24,6 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore
-    private List<OrdersProduct> ordersProducts;
+    private List<OrderProduct> orderProducts;
 
 }

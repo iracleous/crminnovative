@@ -23,9 +23,9 @@ public class Orders {
     private Date ordersDate;
     private double totalAmount;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "orders")
     @JsonIgnore
-    private List<OrdersProduct> ordersProducts;
+    private List<OrderProduct> orderProducts;
 
     @ManyToOne
     private Customer customer;

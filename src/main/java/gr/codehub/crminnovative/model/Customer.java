@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +29,8 @@ public class Customer  {
     private String number;
     private String vatNumber;
     private String email;
-    private Date date;
-    private Date registration;
+    private LocalDate dob;
+    private LocalDate registration;
 
     @ManyToOne
     private Customer recommender;
@@ -41,5 +42,7 @@ public class Customer  {
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Orders> orders;
+
+
 
 }
