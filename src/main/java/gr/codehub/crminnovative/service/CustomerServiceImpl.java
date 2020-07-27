@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @Qualifier("ImplDB")
-public class CustomerServiceDbImpl implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -45,8 +45,8 @@ public class CustomerServiceDbImpl implements CustomerService {
                      .orElseThrow(
                              () -> new CustomerNotFoundException("not such customer"));
 
-        customerInDb.setFirst(customer.getFirst());
-        customerInDb.setLast(customer.getLast());
+        customerInDb.setFirstName(customer.getFirstName());
+        customerInDb.setLastName(customer.getLastName());
 //
         customerRepository.save(customerInDb);
 

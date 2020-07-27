@@ -2,14 +2,14 @@ package gr.codehub.crminnovative.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+//@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,7 +22,7 @@ public class Product {
     private double price;
     private int inventoryQuantity;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     @JsonIgnore
     private List<OrderProduct> orderProducts;
 

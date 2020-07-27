@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,20 +38,25 @@ class OrdersServiceImplTest {
     void testOrderScenario() throws CustomerCreationException,
             ProductCreationException, CustomerNotFoundException, ProductNotFoundException, CannotCreateOrderException {
         Customer customer = new Customer();
-        customer.setFirst("John");
+        customer.setFirstName("John");
         customer.setEmail("john@gmail.com");
+        customer.setDob(LocalDate.of(2000, 7, 23));
         customerService.addCustomer(customer);
 
         Product product = new Product();
         product.setName("potatoes");
+        product.setPrice(1.30);
+        product.setInventoryQuantity(10);
         productService.addProduct(product);
 
         Orders order =
                 orderService.createOrder(customer.getId());
-        OrderProduct orderProduct =
-                orderService.addProductToOrders(
-                        product.getId(), order.getId());
 
+        orderService.addProductToOrders(  product.getId(), order.getId());
+        orderService.addProductToOrders(  product.getId(), order.getId());
+        orderService.addProductToOrders(  product.getId(), order.getId());
+
+// getOrderProducts(); -> throws LazyInitializationException
         List<OrderProduct> orderProductList =
                 orderService.getOrder(order.getId())
                         .getOrderProducts();

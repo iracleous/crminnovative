@@ -70,7 +70,7 @@ public class OrdersServiceImpl implements OrdersService {
     @Override
     public OrderProduct addProductToOrders(int productId, UUID OrdersId)
             throws ProductNotFoundException, CustomerNotFoundException {
-
+///////////
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new
                         ProductNotFoundException("Cannot find product"));
@@ -92,6 +92,8 @@ public class OrdersServiceImpl implements OrdersService {
         }
         else {
             orderProduct = new OrderProduct();
+            orderProduct.setOrders(orders);
+            orderProduct.setProduct(product) ;
             orderProduct.setQuantity(DEFAULT_ORDER_SIZE);
             orderProduct.setPrice(product.getPrice());
         }
@@ -107,8 +109,7 @@ public class OrdersServiceImpl implements OrdersService {
     //TODO
     //to be implemented with JPQL
     @Override
-    public List<OrderProduct> getProductsFromOrders(UUID OrdersId)
-            throws ProductNotFoundException {
+    public List<OrderProduct> getProductsFromOrders(UUID OrdersId) {
         return
                 ordersProductRepository
                         .findAll()

@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,8 +22,8 @@ public class Customer  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String first;
-    private String last;
+    private String firstName;
+    private String lastName;
     private String street;
     private String number;
     private String vatNumber;
@@ -35,12 +34,12 @@ public class Customer  {
     @ManyToOne
     private Customer recommender;
 
-    @OneToMany(mappedBy="recommender")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="recommender")
     private List<Customer> recommended;
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
     private List<Orders> orders;
 
 
