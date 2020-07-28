@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
 
@@ -24,6 +24,25 @@ public class ProductServiceImpl implements ProductService{
     //check the paging method
     @Override
     public List<Product> getProducts() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public List<Product> getProducts(String productName,
+                                     String lessThanPrice,
+                                     String lessThanQuantity,
+                                     String moreThanQuantity) throws ProductNotFoundException {
+
+
+        if (productName != null)
+            return productRepository.findByName(productName);
+        if (lessThanPrice != null)
+            return productRepository.findByPriceLessThan(
+                    Double.parseDouble(lessThanPrice));
+        if (moreThanQuantity != null)
+            return productRepository.findByInventoryQuantityGreaterThan(
+                    Integer.parseInt(moreThanQuantity));
+
         return productRepository.findAll();
     }
 

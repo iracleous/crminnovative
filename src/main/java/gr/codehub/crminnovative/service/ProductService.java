@@ -11,6 +11,8 @@ import java.util.List;
 public interface ProductService {
 
     List<Product> getProducts();
+    List<Product> getProducts(String productName, String lessThanPrice,
+        String lessThanQuantity, String moreThanQuantity) throws ProductNotFoundException;
     Product addProduct(Product product) throws ProductCreationException;
     Product updateProduct(Product product, int productId)
             throws ProductNotFoundException;

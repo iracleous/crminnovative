@@ -22,7 +22,9 @@ public class Customer  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+   // @Column(nullable=false)
     private String firstName;
+
     private String lastName;
     private String street;
     private String number;

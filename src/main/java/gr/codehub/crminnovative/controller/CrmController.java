@@ -8,6 +8,7 @@ import gr.codehub.crminnovative.model.OrderProduct;
 import gr.codehub.crminnovative.model.Product;
 import gr.codehub.crminnovative.service.*;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -28,6 +29,23 @@ public class CrmController {
         this.ordersService = ordersService;
         this.productService = productService;
     }
+
+
+// search product by productName, lessThanPrice,
+// lessThanQuantity, moreThanQuantity
+
+@GetMapping("product")
+public List<Product> getProductsByCriteria(
+        @RequestParam(required = false) String productName,
+        @RequestParam(required = false) String lessThanPrice,
+        @RequestParam(required = false) String lessThanQuantity,
+        @RequestParam(required = false) String moreThanQuantity)
+        throws ProductNotFoundException
+{
+    return productService.getProducts(productName, lessThanPrice,
+            lessThanQuantity, moreThanQuantity  );
+}
+
 
     @GetMapping("customer")
     public List<Customer> getCustomers(){
@@ -57,10 +75,7 @@ public class CrmController {
         return customerService.deleteCustomer(id);
     }
 
-    @GetMapping("product")
-    public List<Product> getProducts(){
-        return productService.getProducts();
-    }
+
     @PostMapping("product")
     public Product addProduct(@RequestBody Product product)
             throws ProductCreationException {

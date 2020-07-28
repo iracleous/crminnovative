@@ -5,6 +5,7 @@ import gr.codehub.crminnovative.model.Customer;
 import gr.codehub.crminnovative.model.OrderProduct;
 import gr.codehub.crminnovative.model.Orders;
 import gr.codehub.crminnovative.model.Product;
+import gr.codehub.crminnovative.repository.OrdersProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +23,8 @@ class OrdersServiceImplTest {
     private ProductService productService;
     @Autowired
     private OrdersService orderService;
-
+    @Autowired
+    private OrdersProductRepository orderProductService;
 
 //    @Test
 //        void addProductToOrdersTest(){
@@ -56,10 +58,13 @@ class OrdersServiceImplTest {
         orderService.addProductToOrders(  product.getId(), order.getId());
         orderService.addProductToOrders(  product.getId(), order.getId());
 
-// getOrderProducts(); -> throws LazyInitializationException
+ //getOrderProducts(); -> throws LazyInitializationException
         List<OrderProduct> orderProductList =
                 orderService.getOrder(order.getId())
                         .getOrderProducts();
+
+//
+
 
         assertEquals(1, orderProductList.size());
     }

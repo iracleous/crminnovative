@@ -27,6 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer addCustomer(Customer customer)
             throws CustomerCreationException {
+
         if (customer == null)
             throw new CustomerCreationException("null customer");
          if (customer.getEmail()==null  || !customer.getEmail().contains("@")    )
