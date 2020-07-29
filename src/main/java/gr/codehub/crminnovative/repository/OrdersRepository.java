@@ -15,8 +15,6 @@ public interface OrdersRepository extends JpaRepository<Orders, UUID> {
 
     //todo
     //JPQL query with JOIN FETCH the lazy associations.
-//    @Query("SELECT * FROM OrderProduct op WHERE op.order_id = ")
-//    List<OrderProduct> findAOrderProductByOrder(UUID order);
 
 
 

@@ -6,11 +6,13 @@ import gr.codehub.crminnovative.model.Product;
 import gr.codehub.crminnovative.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 
 @Service
+@Slf4j
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
@@ -32,6 +34,9 @@ public class ProductServiceImpl implements ProductService {
                                      String lessThanPrice,
                                      String lessThanQuantity,
                                      String moreThanQuantity) throws ProductNotFoundException {
+
+        String hello="hello to you";
+        log.info("Simple log statement with inputs {} ", hello );
 
 
         if (productName != null)
