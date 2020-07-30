@@ -26,4 +26,5 @@ public class Product {
     @JsonIgnore
     private List<OrderProduct> orderProducts;
 
+
 }
