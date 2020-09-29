@@ -54,7 +54,7 @@ class ProductRepositoryTest {
     void find3Test() throws ProductNotFoundException {
 
         List<Product> products = productService.getProducts("potatoes",
-                "1.3", "", "");
+                "1.4", "", "");
         int pc= products.size();
         assertEquals(6, pc);
     }

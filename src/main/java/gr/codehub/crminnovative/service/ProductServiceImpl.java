@@ -4,19 +4,13 @@ import gr.codehub.crminnovative.exception.ProductCreationException;
 import gr.codehub.crminnovative.exception.ProductNotFoundException;
 import gr.codehub.crminnovative.model.Product;
 import gr.codehub.crminnovative.repository.ProductRepository;
-import gr.codehub.crminnovative.repository.specs.ProductSpecification;
+import gr.codehub.crminnovative.repository.specs.TSpecification;
 import gr.codehub.crminnovative.repository.specs.SearchCriteria;
 import gr.codehub.crminnovative.repository.specs.SearchOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 
@@ -51,9 +45,9 @@ public class ProductServiceImpl implements ProductService {
 
 
 
-        ProductSpecification msTitleRating = new ProductSpecification();
-        msTitleRating.add(new SearchCriteria("name", productName, SearchOperation.MATCH));
-        msTitleRating.add(new SearchCriteria("price", lessThanPrice, SearchOperation.GREATER_THAN));
+        TSpecification<Product> msTitleRating = new TSpecification<>();
+  if(productName!=null)      msTitleRating.add(new SearchCriteria("name", productName, SearchOperation.MATCH));
+        if(lessThanPrice!=null)    msTitleRating.add(new SearchCriteria("price", lessThanPrice, SearchOperation.LESS_THAN_EQUAL));
         List<Product> msTitleRatingList = productRepository.findAll(msTitleRating);
     return msTitleRatingList;
 

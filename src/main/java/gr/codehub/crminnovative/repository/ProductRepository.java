@@ -2,17 +2,13 @@ package gr.codehub.crminnovative.repository;
 
 
 import gr.codehub.crminnovative.dto.SurveyResults;
-import gr.codehub.crminnovative.model.Customer;
 import gr.codehub.crminnovative.model.Product;
-import gr.codehub.crminnovative.repository.specs.ProductSpecification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
 //TODO
 //change it with paging
