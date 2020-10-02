@@ -11,8 +11,8 @@
 	<groupId>gr.codehub</groupId>
 	<artifactId>crminnovative</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>crminnovative</name>
-	<description>CRM based on Spring</description>
+	<name>CRM Innovative</name>
+	<description>CRM application based on Spring</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -89,7 +89,16 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
-
+        <!--MY SQL-->
+<!--		<dependency>-->
+<!--			<groupId>mysql</groupId>-->
+<!--			<artifactId>mysql-connector-java</artifactId>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
