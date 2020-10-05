@@ -8,13 +8,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
 public interface CustomerRepository
         extends JpaRepository<Customer, Integer> {
 
-    Customer findByEmail(String emailAddress);
+    Optional<Customer> findFirstByEmail(String emailAddress);
     List<Customer> findByLastName(String lastname, Sort sort);
     Page<Customer> findByFirstName(String firstname, Pageable pageable);
 

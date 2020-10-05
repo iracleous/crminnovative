@@ -22,6 +22,7 @@ public class Orders {
     private Date ordersDate;
     private double totalAmount;
 
+    //  CHECK THIS SPOT SOMETHING NEEDS TO BE CHANGED
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "orders")
     @JsonIgnore
     private List<OrderProduct> orderProducts;

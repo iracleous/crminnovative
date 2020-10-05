@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/actionsJS.js}" ></script>
+</head>
+<body>
+<div class="container">
+    <form style="margin-top: 100px;">
+        <div class="form-group row">
+            <div class="col-xs-3">
+                <label for="name">Produt name</label>
+                <input  placeholder="name" class="form-control" name="name"  id="name"/>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                <label for="inventoryQuantity">Produt inventory quantity</label>
+                <input  placeholder="inventoryQuantity" class="form-control"
+                        name="inventoryQuantity"  id="inventoryQuantity"/>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                <label for="price">Produt price</label>
+                <input placeholder="price" class="form-control" name="price" id="price"/>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" onclick="submitProduct()">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

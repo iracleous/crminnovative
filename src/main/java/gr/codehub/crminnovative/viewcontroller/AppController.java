@@ -1,17 +1,26 @@
 package gr.codehub.crminnovative.viewcontroller;
 
+import gr.codehub.crminnovative.model.Customer;
 import gr.codehub.crminnovative.model.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequestMapping("/v1")
 public class AppController {
-    @GetMapping("/app")
-    public String getFirstPage(){
-        return "index";
+    @GetMapping("/createproduct")
+    public String crtproduct(@ModelAttribute Product product){
+        return "createProductPage";
+    }
+
+    @GetMapping("/login")
+    public String loginAuth(){
+        return "loginPage";
+    }
+
+    @PostMapping("loginAuth")
+    public String loginAuthorization(@ModelAttribute Customer customer){
+        return (customer.getEmail().equals("giannis")?"index":"errorPage");
     }
 }

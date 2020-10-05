@@ -12,6 +12,7 @@ import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -30,6 +31,7 @@ public class Customer  {
     private String number;
     private String vatNumber;
     private String email;
+    private String password;
     private LocalDate dob;
     private LocalDate registration;
 
@@ -41,8 +43,17 @@ public class Customer  {
 
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @OneToMany( mappedBy = "customer")
     private List<Orders> orders;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    //user owns the association, role does not own the association
+    @JoinTable(
+            name = "role_user",
+            joinColumns = @JoinColumn(name = "costumer_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 
 
