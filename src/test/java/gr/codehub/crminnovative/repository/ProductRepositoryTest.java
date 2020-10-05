@@ -1,24 +1,39 @@
 package gr.codehub.crminnovative.repository;
 
 import gr.codehub.crminnovative.dto.SurveyResults;
+
 import gr.codehub.crminnovative.exception.ProductNotFoundException;
+import gr.codehub.crminnovative.model.Customer;
 import gr.codehub.crminnovative.model.OrderProduct;
 import gr.codehub.crminnovative.model.Orders;
 import gr.codehub.crminnovative.model.Product;
 import gr.codehub.crminnovative.service.ProductService;
+import gr.codehub.crminnovative.service.ProductServiceImpl;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+
 @SpringBootTest
 class ProductRepositoryTest {
-    @Autowired
-    private ProductRepository productRepository;
+    @Mock
+    ProductRepository productRepository;
 
-    @Autowired
+    @InjectMocks
+    ProductServiceImpl productService;
+
+
+
+
+    /*@Autowired
     private OrdersRepository ordersRepository;
 
     @Autowired
@@ -57,6 +72,6 @@ class ProductRepositoryTest {
                 "1.4", "", "");
         int pc= products.size();
         assertEquals(6, pc);
-    }
+    }*/
 
 }

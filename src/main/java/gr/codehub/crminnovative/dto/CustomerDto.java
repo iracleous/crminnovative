@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -13,13 +14,13 @@ import java.util.Date;
 public class CustomerDto {
     private int id;
 
-    private String first;
+    private String firstName;
 
-    private String last;
+    private String lastName;
     private String street;
     private String number;
     private String vatNumber;
     private String email;
-    private Date date;
-    private Date registration;
+    private LocalDate dob;
+    private LocalDate registration;
 }

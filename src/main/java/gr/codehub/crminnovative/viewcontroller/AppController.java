@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AppController {
-    @GetMapping("/createproduct")
+    @GetMapping("/admin/createproduct")
     public String crtproduct(@ModelAttribute Product product){
+        return "createProductPage";
+    }
+
+    @GetMapping("/test/createproduct")
+    public String crtproduct2(@ModelAttribute Product product){
         return "createProductPage";
     }
 

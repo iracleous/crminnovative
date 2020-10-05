@@ -1,6 +1,7 @@
 package gr.codehub.crminnovative.controller;
 
 
+import gr.codehub.crminnovative.dto.CustomerDto;
 import gr.codehub.crminnovative.exception.*;
 import gr.codehub.crminnovative.model.Customer;
 import gr.codehub.crminnovative.model.Orders;
@@ -48,26 +49,26 @@ public List<Product> getProductsByCriteria(
 
 
     @GetMapping("customer")
-    public List<Customer> getCustomers(){
+    public List<CustomerDto> getCustomers(){
         return customerService.getCustomers();
     }
 
       @GetMapping("customer/{id}")
-      public Customer getCustomer(@PathVariable int id)
+      public CustomerDto getCustomer(@PathVariable int id)
               throws CustomerNotFoundException {
            return customerService.getCustomer(id);
       }
 
     @PostMapping("customer")
-    public Customer addCustomer(@RequestBody Customer customer)
+    public CustomerDto addCustomer(@RequestBody CustomerDto customerDto)
             throws CustomerCreationException {
-        return customerService.addCustomer(customer);
+        return customerService.addCustomer(customerDto);
     }
 
     @PutMapping("customer/{id}" )
-    public Customer updateCustomer(@RequestBody Customer customer,
+    public CustomerDto updateCustomer(@RequestBody CustomerDto customerDto,
             @PathVariable int id  ) throws CustomerNotFoundException {
-        return customerService.updateCustomer(customer, id);
+        return customerService.updateCustomer(customerDto, id);
     }
 
     @DeleteMapping("customer/{id}")

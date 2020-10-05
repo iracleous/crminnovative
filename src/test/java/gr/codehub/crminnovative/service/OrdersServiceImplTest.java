@@ -1,5 +1,6 @@
 package gr.codehub.crminnovative.service;
 
+import gr.codehub.crminnovative.dto.CustomerDto;
 import gr.codehub.crminnovative.exception.*;
 import gr.codehub.crminnovative.model.Customer;
 import gr.codehub.crminnovative.model.OrderProduct;
@@ -39,7 +40,7 @@ class OrdersServiceImplTest {
     @Test
     void testOrderScenario() throws CustomerCreationException,
             ProductCreationException, CustomerNotFoundException, ProductNotFoundException, CannotCreateOrderException {
-        Customer customer = new Customer();
+        CustomerDto customer = new CustomerDto();
         customer.setFirstName("John");
         customer.setEmail("john@gmail.com");
         customer.setDob(LocalDate.of(2000, 7, 23));
