@@ -8,6 +8,7 @@ import gr.codehub.crminnovative.repository.specs.TSpecification;
 import gr.codehub.crminnovative.repository.specs.SearchCriteria;
 import gr.codehub.crminnovative.repository.specs.SearchOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -107,6 +108,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product, int productId) throws ProductNotFoundException {
+        product.setId(productId);
         return productRepository.save(product);
     }
 
@@ -118,6 +120,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProduct(int productId) throws ProductNotFoundException {
-        return null;
+        return productRepository.findById(productId).get();
     }
 }

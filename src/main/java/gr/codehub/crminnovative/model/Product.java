@@ -24,6 +24,8 @@ public class Product {
     private String name;
     private double price;
     private int inventoryQuantity;
+    @Column(length = 16777215, columnDefinition = "mediumtext")
+    private String profilePictureAsDataURL;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     @JsonIgnore

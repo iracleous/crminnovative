@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -54,16 +55,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //Makes the system stateless and requires auth in every call
                 //Comment out in order to integrate system with thymeleaf
                 //.sessionManagement()
+                //.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 //.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 //.and()
+                //required for file upload page (viewProduct) to properly show all forms
+                .csrf().csrfTokenRepository(new HttpSessionCsrfTokenRepository())
+                .and()
                 .authorizeRequests()
                 //Enables system to render the html pages
                 .antMatchers(resources).permitAll()
                 .antMatchers("/", "/login", "/error", "/firstTime").permitAll()
-                //.antMatchers("/**").permitAll() //remove this to make security work again !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                .antMatchers("/**").permitAll() //remove this to make security work again !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //                .antMatchers("/admin/*").access("hasAuthority('ADMIN')")
 //                .antMatchers("/user/*").access("hasAuthority('DEVELOPER') or hasAuthority('ADMIN')")
-                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")/*.permitAll()*/

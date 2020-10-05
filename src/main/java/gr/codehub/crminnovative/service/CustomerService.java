@@ -16,5 +16,4 @@ public interface CustomerService {
             throws CustomerNotFoundException;
     boolean deleteCustomer(int customerIndex);
     Customer getCustomer(int customerId) throws CustomerNotFoundException;
-
 }

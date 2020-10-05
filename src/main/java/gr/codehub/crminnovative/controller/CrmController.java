@@ -9,7 +9,10 @@ import gr.codehub.crminnovative.model.Product;
 import gr.codehub.crminnovative.service.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.util.List;
@@ -94,8 +97,6 @@ public List<Product> getProductsByCriteria(
             throws CustomerNotFoundException, ProductNotFoundException {
         return ordersService.addProductToOrders(productId, ordersId);
     }
-
-
 
 //
 //

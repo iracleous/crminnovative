@@ -18,5 +18,4 @@ public interface ProductService {
             throws ProductNotFoundException;
     boolean deleteProduct(int productIndex);
     Product getProduct(int productId) throws ProductNotFoundException;
-    
 }
